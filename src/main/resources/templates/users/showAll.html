@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body>
+    <main class = "container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1>STAFFs</h1>
+                <ul>
+                    <li th:each="staff : ${staff}">
+                        <span th:text="${staff.id}"></span>
+                        <span th:text="${staff.name}"></span><br>
+                        <span th:text="${staff.email}"></span><br>
+                        <span th:text="${staff.roleType}"></span><br>
+                        <span th:text="${staff.clarity}"></span><br>
+                        <span th:text="${staff.niceness}"></span><br>
+                        <span th:text="${staff.knowledgeableScore}"></span><br>
+                        <span th:text="${staff.comment}"></span><br>
+                        <div th:switch="${staff.name}">
+                            <div th:case="'Dr. Smith'">
+                                <span>Title: Professor</span><br>
+                            </div>
+                            <div th:case="'Dr. Johnson'">
+                                <span>Title: Associate Professor</span><br>
+                            </div>
+                            <div th:case="'Dr. Lee'">
+                                <span>Title: Assistant Professor</span><br>
+                            </div>
+                            <div th:case="*">
+                                <span>Title: Unknown</span><br>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+    </main>
+</body>
+</html>
