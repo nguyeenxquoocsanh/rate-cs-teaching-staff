@@ -1,0 +1,37 @@
+th,
+td {
+    border: var(--border);
+    padding: .5rem;
+    vertical-align: top;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: Canvas;
+}
+
+.note {
+    border-left: 4px solid #9997;
+    padding-left: .75rem;
+    margin: .75rem 0;
+    opacity: .95;
+}
+
+.pill {
+    display: inline-block;
+    padding: .15rem .5rem;
+    border: var(--border);
+    border-radius: 999px;
+    font-size: .9rem;
+}
+
+.bad {
+    color: #c33;
+    font-weight: 700;
+}
+
+.good {
+    color: #2a7;
+    font-weight: 700;
+}

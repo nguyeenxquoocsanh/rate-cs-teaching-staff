@@ -8,38 +8,30 @@
 
 </head>
 <body>
-    <main class = "container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h1>STAFFs</h1>
-                <ul>
-                    <li th:each="staff : ${staff}">
-                        <span th:text="${staff.id}"></span>
-                        <span th:text="${staff.name}"></span><br>
-                        <span th:text="${staff.email}"></span><br>
-                        <span th:text="${staff.roleType}"></span><br>
-                        <span th:text="${staff.clarity}"></span><br>
-                        <span th:text="${staff.niceness}"></span><br>
-                        <span th:text="${staff.knowledgeableScore}"></span><br>
-                        <span th:text="${staff.comment}"></span><br>
-                        <div th:switch="${staff.name}">
-                            <div th:case="'Dr. Smith'">
-                                <span>Title: Professor</span><br>
-                            </div>
-                            <div th:case="'Dr. Johnson'">
-                                <span>Title: Associate Professor</span><br>
-                            </div>
-                            <div th:case="'Dr. Lee'">
-                                <span>Title: Assistant Professor</span><br>
-                            </div>
-                            <div th:case="*">
-                                <span>Title: Unknown</span><br>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
+    <main class = "container">
+        <h1>Staff List</h1>
+        <table class="table table-striped">
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Clarity</th>
+                <th>Niceness</th>
+                <th>Knowledgeable Score</th>
+                <th>Comment</th>
+            </tr>
+            <tr th:each="staff : ${staff}">
+                <td th:text="${staff.id}"></td>
+                <td th:text="${staff.name}"></td>
+                <td th:text="${staff.email}"></td>
+                <td th:text="${staff.roleType}"></td>
+                <td th:text="${staff.clarity}"></td>
+                <td th:text="${staff.niceness}"></td>
+                <td th:text="${staff.knowledgeableScore}"></td>
+                <td th:text="${staff.comment}"></td>
+            </tr>
+        </table>
     </main>
 </body>
 </html>
