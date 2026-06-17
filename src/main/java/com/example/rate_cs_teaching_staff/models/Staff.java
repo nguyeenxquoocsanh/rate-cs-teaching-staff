@@ -19,7 +19,6 @@ public class Staff {
     private int niceness;
     private int knowledgeableScore;
     private String comment;
-    //there are recommended attributes called createdAt and updatedAt, maybe can add later?
 
     // Constructors, getters, and setter
     public Staff() {
