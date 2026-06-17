@@ -1,7 +1,17 @@
 package com.example.rate_cs_teaching_staff.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "staff")
 public class Staff {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
     private String email;
     private String roleType;
@@ -15,7 +25,7 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String id, String name, String email, String roleType, int clarity, int niceness,
+    public Staff(int id, String name, String email, String roleType, int clarity, int niceness,
             int knowledgeableScore, String comment) {
         this.id = id;
         this.name = name;
@@ -27,11 +37,11 @@ public class Staff {
         this.comment = comment;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
