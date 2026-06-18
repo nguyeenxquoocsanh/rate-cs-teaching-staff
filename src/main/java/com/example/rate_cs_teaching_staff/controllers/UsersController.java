@@ -1,6 +1,6 @@
 package com.example.rate_cs_teaching_staff.controllers;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.rate_cs_teaching_staff.models.Staff;
 import com.example.rate_cs_teaching_staff.models.UsersRepository;
@@ -15,8 +16,10 @@ import com.example.rate_cs_teaching_staff.models.UsersRepository;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+// import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -51,8 +54,26 @@ public class UsersController {
 
     //Modifying Users
     @GetMapping("/users/modify/{id}")
-    public String showEditForm(@RequestParam String param) {
-        return new String();
+    public String showEditForm(@PathVariable("id") int id, Model model){
+        Staff staff = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid staff Id:" + id));
+        model.addAttribute("staff", staff);
+        return "users/modify";
     }
-  
+
+    @PostMapping("users/modified/{id}")
+    public String modifiedStaff(@PathVariable("id") int id, @RequestParam Map<String, String> modifiedStaff){
+        System.out.println("Updating Staff with ID: " + id);
+
+        String name = modifiedStaff.get("name");
+        String email = modifiedStaff.get("email");
+        String roleType = modifiedStaff.get("roleType");
+        int clarity = Integer.parseInt(modifiedStaff.get("clarity"));
+        int niceness = Integer.parseInt(modifiedStaff.get("niceness"));
+        int knowledgeableScore = Integer.parseInt(modifiedStaff.get("knowledgeableScore"));
+        String comment = modifiedStaff.get("comment");
+
+        userRepo.save(new Staff(id, name, email, roleType, clarity, niceness, knowledgeableScore, comment));
+        return "users/modifiedStaff";
+
+    }
 }
