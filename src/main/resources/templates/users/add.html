@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add CS Teaching Staff</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <main class="container mt-5" style="max-width: 600px;">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Add Staff Rating</h1>
+            <a href="/users/view" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+
+        <div class="alert alert-danger" role="alert" th:if="${invalidData}" th:text="${invalidData}"></div>
+    
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form action="/users/add" method="post">
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter staff name" 
+                               th:value="${staff != null ? staff.get('name') : ''}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter staff email" 
+                               th:value="${staff != null ? staff.get('email') : ''}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="roleType" class="form-label">Role Type</label>
+                        <select class="form-select" id="roleType" name="roleType" required>
+                            <option value="" th:selected="${staff == null || staff.get('roleType') == null}">Select a role...</option>
+                            <option value="TA" th:selected="${staff != null && staff.get('roleType') == 'TA'}">Teaching Assistant (TA)</option>
+                            <option value="PROF" th:selected="${staff != null && staff.get('roleType') == 'PROF'}">Professor (PROF)</option>
+                            <option value="INSTRUCTOR" th:selected="${staff != null && staff.get('roleType') == 'INSTRUCTOR'}">Instructor</option>
+                            <option value="STAFF" th:selected="${staff != null && staff.get('roleType') == 'STAFF'}">General Staff</option>
+                        </select>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="clarity" class="form-label">Clarity</label>
+                            <input type="number" class="form-control" id="clarity" name="clarity" min="1" max="10" 
+                                   th:value="${staff != null ? staff.get('clarity') : ''}" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="niceness" class="form-label">Niceness</label>
+                            <input type="number" class="form-control" id="niceness" name="niceness" min="1" max="10" 
+                                   th:value="${staff != null ? staff.get('niceness') : ''}" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="knowledgeableScore" class="form-label">Knowledge</label>
+                            <input type="number" class="form-control" id="knowledgeableScore" name="knowledgeableScore" min="1" max="10" 
+                                   th:value="${staff != null ? staff.get('knowledgeableScore') : ''}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Comment</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Enter any additional comments (max 500 chars)"
+                                  th:text="${staff != null ? staff.get('comment') : ''}"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">Submit Rating</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
