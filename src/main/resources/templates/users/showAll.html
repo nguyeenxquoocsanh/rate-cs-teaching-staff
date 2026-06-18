@@ -3,35 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS Staff List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
+    <title>CS Staff Ratings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <main class = "container">
-        <h1>Staff List</h1>
-        <table class="table table-striped">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Clarity</th>
-                <th>Niceness</th>
-                <th>Knowledgeable Score</th>
-                <th>Comment</th>
-            </tr>
-            <tr th:each="staff : ${staff}">
-                <td th:text="${staff.id}"></td>
-                <td th:text="${staff.name}"></td>
-                <td th:text="${staff.email}"></td>
-                <td th:text="${staff.roleType}"></td>
-                <td th:text="${staff.clarity}"></td>
-                <td th:text="${staff.niceness}"></td>
-                <td th:text="${staff.knowledgeableScore}"></td>
-                <td th:text="${staff.comment}"></td>
-            </tr>
+    <main class="container mt-5">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>CS Teaching Staff Ratings</h1>
+            <a href="/users/add" class="btn btn-success">Add New Rating</a>
+        </div>
+        
+        <table class="table table-striped table-hover border">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Overall Score (Avg)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="staff : ${staff}">
+                    <td th:text="${staff.name}"></td>
+                    <td th:text="${staff.roleType}"></td>
+                    
+                    <td th:text="${#numbers.formatDecimal((staff.clarity + staff.niceness + staff.knowledgeableScore) / 3.0, 1, 1)} + ' / 10'"></td>
+                    
+                    <td>
+                        <a th:href="@{/users/view/{id}(id=${staff.id})}" class="btn btn-sm btn-primary">View Details</a>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </main>
 </body>
 </html>
+
+
+
+
+//Changes the page to only display the name, role, and overall score (average of clarity, niceness, and knowledgeable score) of each staff member. The overall score is displayed as a decimal with one digit after the decimal point, followed by " / 10". The "View Details" button remains to allow users to see more information about each staff member.

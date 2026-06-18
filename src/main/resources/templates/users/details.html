@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Member Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <main class="container mt-5">
+        
+        <div class="mb-4">
+            <a href="/users/view" class="btn btn-outline-secondary">&larr; Back to All Ratings</a>
+        </div>
+
+        <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+            <div class="card-header bg-dark text-white text-center">
+                <h2 class="mb-0" th:text="${staff.name}">Staff Name</h2>
+                <span class="badge bg-info mt-2" th:text="${staff.roleType}">Role</span>
+            </div>
+            
+            <div class="card-body">
+                <h5 class="text-muted border-bottom pb-2 mb-3">Contact Information</h5>
+                <p><strong>Email:</strong> <span th:text="${staff.email}"></span></p>
+
+                <h5 class="text-muted border-bottom pb-2 mb-3 mt-4">Ratings</h5>
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Clarity:</span> <strong th:text="${staff.clarity} + ' / 10'"></strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Niceness:</span> <strong th:text="${staff.niceness} + ' / 10'"></strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Knowledgeable:</span> <strong th:text="${staff.knowledgeableScore} + ' / 10'"></strong>
+                    </li>
+                </ul>
+
+                <h5 class="text-muted border-bottom pb-2 mb-3 mt-4">Additional Comments</h5>
+                <p class="fst-italic" th:text="${staff.comment != null && !staff.comment.isEmpty() ? staff.comment : 'No comments provided.'}"></p>
+            </div>
+
+            <div class="card-footer d-flex justify-content-between align-items-center bg-light">
+                <a th:href="@{/users/modify/{id}(id=${staff.id})}" class="btn btn-warning">Edit Rating</a>
+
+                <form th:action="@{/users/delete/{id}(id=${staff.id})}" method="post" onsubmit="return confirm('Are you sure you want to permanently delete this rating?');">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
