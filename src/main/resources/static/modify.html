@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Staff Management</h1>
+    
+    </div>
+    <section>
+        <form action="/users/modify" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter staff name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter staff email" required>
+            </div>
+            <div class="mb-3">
+                <label for="roleType" class="form-label">Role Type</label>
+                <input type="text" class="form-control" id="roleType" name="roleType" placeholder="Enter staff role type" required>
+            </div>
+            <div class="mb-3">
+                <label for="clarity" class="form-label">Clarity</label>
+                <input type="number" class="form-control" id="clarity" name="clarity" min="1" max="5" placeholder="Enter clarity rating (1-5)" required>
+            </div>
+            <div class="mb-3">
+                <label for="niceness" class="form-label">Niceness</label>
+                <input type="number" class="form-control" id="niceness" name="niceness" min="1" max="5" placeholder="Enter niceness rating (1-5)" required>
+            </div>
+            <div class="mb-3">
+                <label for="knowledgeableScore" class="form-label">Knowledgeable Score</label>
+                <input type="number" class="form-control" id="knowledgeableScore" name="knowledgeableScore" min="1" max="5" placeholder="Enter knowledgeable score (1-5)" required>
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Comment</label>
+                <textarea class="form-control" id="comment" name="comment" placeholder="Enter any additional comments"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+        </form>
+    </section>
+    
+</body>
+</html>

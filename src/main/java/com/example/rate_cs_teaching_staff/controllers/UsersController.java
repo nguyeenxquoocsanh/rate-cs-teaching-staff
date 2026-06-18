@@ -47,5 +47,12 @@ public class UsersController {
         response.setStatus(201);
         return "users/addedStaff";
     }
+
+
+    //Modifying Users
+    @GetMapping("/users/modify/{id}")
+    public String showEditForm(@RequestParam String param) {
+        return new String();
+    }
   
 }
