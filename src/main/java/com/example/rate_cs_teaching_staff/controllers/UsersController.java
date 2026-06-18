@@ -34,7 +34,7 @@ public class UsersController {
     public String viewStaffDetail(@PathVariable("id") int id, Model model) {
         Staff staff = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid staff Id:" + id));
         model.addAttribute("staff", staff);
-        return "users/detail"; 
+        return "users/details"; 
     }
 
     @PostMapping("/users/delete/{id}")
