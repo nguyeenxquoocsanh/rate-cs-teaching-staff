@@ -23,7 +23,3 @@ https://rate-cs-teaching-staff-rn58.onrender.com
    * On Windows: `mvnw.cmd spring-boot:run`
 4. **Access the application:**
    Open your web browser and navigate to `http://localhost:8080/users/view`
-
-## Known Issues / Future Work (Iteration 1)
-* **Aggregated Averages:** Currently, each entry acts as an isolated rating. In a future iteration, the database schema should be normalized to allow multiple users to submit individual ratings for a single instructor, with the application calculate the average score from all users. Something similar to ratemyprof
-* **Authentication:** There is no user login authentication, anyone with the repository can perform all the actions
