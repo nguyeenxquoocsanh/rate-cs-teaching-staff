@@ -38,8 +38,8 @@
                             <option value="" th:selected="${staff == null || staff.get('roleType') == null}">Select a role...</option>
                             <option value="TA" th:selected="${staff != null && staff.get('roleType') == 'TA'}">Teaching Assistant (TA)</option>
                             <option value="PROF" th:selected="${staff != null && staff.get('roleType') == 'PROF'}">Professor (PROF)</option>
-                            <option value="INSTRUCTOR" th:selected="${staff != null && staff.get('roleType') == 'INSTRUCTOR'}">Instructor</option>
-                            <option value="STAFF" th:selected="${staff != null && staff.get('roleType') == 'STAFF'}">General Staff</option>
+                            <option value="ADMIN" th:selected="${staff != null && staff.get('roleType') == 'ADMIN'}">Administrator (ADMIN)</option>
+                            <option value="SUPPORT" th:selected="${staff != null && staff.get('roleType') == 'SUPPORT'}">General Staff</option>
                         </select>
                     </div>
                     

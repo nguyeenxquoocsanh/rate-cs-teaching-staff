@@ -99,4 +99,23 @@ public class Staff {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    public int getAverageRating() {
+        return Math.round(clarity + niceness + knowledgeableScore) / 3;
+    }
+
+    public String getDisplayTitle(){
+        StaffMemberProfile profile;
+        switch (roleType) {
+            case "TA":
+                profile = new TAProfile();
+                break;
+            case "PROF":
+                profile = new ProfessorProfile();
+                break;
+            default:
+                profile = new GeneralStaffProfile();
+        }
+        return profile.displayTitle(name);
+    }
 }

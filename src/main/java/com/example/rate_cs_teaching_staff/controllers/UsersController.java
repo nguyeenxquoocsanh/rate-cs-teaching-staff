@@ -18,10 +18,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class UsersController {
-    
-    @Autowired
-    private UsersRepository userRepo;
 
+    private final UsersRepository userRepo;
+
+    UsersController(UsersRepository userRepo) {
+        this.userRepo = userRepo;
+    }
+    
     @GetMapping("/users/view")
     public String getAllUsers(Model model) {
         System.out.println("Getting all users");

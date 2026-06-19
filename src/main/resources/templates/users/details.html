@@ -15,7 +15,7 @@
 
         <div class="card shadow-sm mx-auto" style="max-width: 600px;">
             <div class="card-header bg-dark text-white text-center">
-                <h2 class="mb-0" th:text="${staff.name}">Staff Name</h2>
+                <h2 class="mb-0" th:text="${staff.getDisplayTitle()}">Staff Name</h2>
                 <span class="badge bg-info mt-2" th:text="${staff.roleType}">Role</span>
             </div>
             

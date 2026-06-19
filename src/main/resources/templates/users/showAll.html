@@ -27,9 +27,9 @@
                 <tr th:each="staff : ${staff}">
                     <td th:text="${staff.name}"></td>
                     <td th:text="${staff.roleType}"></td>
-                    
-                    <td th:text="${#numbers.formatDecimal((staff.clarity + staff.niceness + staff.knowledgeableScore) / 3.0, 1, 1)} + ' / 10'"></td>
-                    
+
+                    <td th:text="${staff.getAverageRating()} + ' / 10'"></td>
+
                     <td>
                         <a th:href="@{/users/view/{id}(id=${staff.id})}" class="btn btn-sm btn-primary">View Details</a>
                     </td>
