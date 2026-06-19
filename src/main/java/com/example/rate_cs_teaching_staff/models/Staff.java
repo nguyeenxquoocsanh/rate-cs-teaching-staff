@@ -101,7 +101,7 @@ public class Staff {
     }
 
     public int getAverageRating() {
-        return Math.round(clarity + niceness + knowledgeableScore) / 3;
+        return Math.round((clarity + niceness + knowledgeableScore) / 3);
     }
 
     public String getDisplayTitle(){
